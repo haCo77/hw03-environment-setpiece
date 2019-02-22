@@ -24,11 +24,11 @@ Implementation Details
 <p align="center">
 c = 1 - 16 * pow(max(0, length(vec2(pos.x, pos.z - 0.2 * pos.y) * vec2(0.11 + 0.46 * pos.y)) - 0.9 * pos.y * dp * dp), 1.2)  
 </p>  
-where pos is a position and dp is the energy density at the position. When pos.y is higher, pos.xz needs to be smaller and dp needs to be higher to keep c close to 1. Then I multiply the color of fire with c. If c is less than a threshold, that pixel will be regarded as ground or firewood rather than fire. when calculating c I translate pos.z by 0.2 * pos.y so flame leans down to the wind. I use an intermediate variable to dtermine the color of flame,  
+    where pos is a position and dp is the energy density at the position. When pos.y is higher, pos.xz needs to be smaller and dp needs to be higher to keep c close to 1. Then I multiply the color of fire with c. If c is less than a threshold, that pixel will be regarded as ground or firewood rather than fire. when calculating c I translate pos.z by 0.2 * pos.y so flame leans down to the wind. I use an intermediate variable to dtermine the color of flame,  
 <p align="center">
 c1 = 0.05 * denf * (2.0 - pow(1.0 * pos.y, 4.))
 </p>  
-where denf is the accumulated energy density along the ray. This variable make the flame brighter at the bottom. I set the color of flame as 1.6 * vec3(1.5*c1, 1.3*c1*c1, c1*c1*c1).
+    where denf is the accumulated energy density along the ray. This variable make the flame brighter at the bottom. I set the color of flame as 1.6 * vec3(1.5*c1, 1.3*c1*c1, c1*c1*c1).
 
 - SDF Firewood. The firewood is two cylinders transformed and combined together. I add displacement to it using the FBM noise to create a organic shape.
 
